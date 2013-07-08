@@ -2,7 +2,7 @@
 repos:
   repo_paths:
     # openstack git repos
-    git://github.com/stackforge/puppet-nova: nova
+    git://github.com/statustech/puppet-nova: nova
     git://github.com/stackforge/puppet-glance: glance
     git://github.com/stackforge/puppet-swift: swift
     git://github.com/stackforge/puppet-keystone: keystone

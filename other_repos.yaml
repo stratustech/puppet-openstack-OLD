@@ -2,30 +2,30 @@
 repos:
   repo_paths:
     # openstack git repos
-    git://github.com/statustech/puppet-nova: nova
-    git://github.com/stackforge/puppet-glance: glance
-    git://github.com/stackforge/puppet-swift: swift
-    git://github.com/stackforge/puppet-keystone: keystone
-    git://github.com/stackforge/puppet-horizon: horizon
-    git://github.com/stackforge/puppet-cinder: cinder
-    git://github.com/stackforge/puppet-quantum: quantum
+    https://github.com/statustech/puppet-nova: nova
+    https://github.com/stackforge/puppet-glance: glance
+    https://github.com/stackforge/puppet-swift: swift
+    https://github.com/stackforge/puppet-keystone: keystone
+    https://github.com/stackforge/puppet-horizon: horizon
+    https://github.com/stackforge/puppet-cinder: cinder
+    https://github.com/stackforge/puppet-quantum: quantum
     # openstack middleware
-    git://github.com/puppetlabs/puppetlabs-rabbitmq: rabbitmq
-    git://github.com/puppetlabs/puppetlabs-mysql: mysql
-    git://github.com/puppetlabs/puppetlabs-git: git
-    git://github.com/puppetlabs/puppetlabs-vcsrepo: vcsrepo
-    git://github.com/saz/puppet-memcached: memcached
-    git://github.com/puppetlabs/puppetlabs-rsync: rsync
-    git://github.com/puppetlabs/puppetlabs-apache: apache
-    git://github.com/bodepd/puppet-vswitch: vswitch
+    https://github.com/puppetlabs/puppetlabs-rabbitmq: rabbitmq
+    https://github.com/puppetlabs/puppetlabs-mysql: mysql
+    https://github.com/puppetlabs/puppetlabs-git: git
+    https://github.com/puppetlabs/puppetlabs-vcsrepo: vcsrepo
+    https://github.com/saz/puppet-memcached: memcached
+    https://github.com/puppetlabs/puppetlabs-rsync: rsync
+    https://github.com/puppetlabs/puppetlabs-apache: apache
+    https://github.com/bodepd/puppet-vswitch: vswitch
     # other deps
-    git://github.com/puppetlabs/puppetlabs-xinetd: xinetd
-    git://github.com/saz/puppet-ssh: ssh
-    git://github.com/puppetlabs/puppetlabs-stdlib: stdlib
-    git://github.com/puppetlabs/puppetlabs-apt: apt
-    git://github.com/ripienaar/puppet-concat: concat
-    git://github.com/duritong/puppet-sysctl.git: sysctl
-    git://github.com/cprice-puppet/puppetlabs-inifile: inifile
+    https://github.com/puppetlabs/puppetlabs-xinetd: xinetd
+    https://github.com/saz/puppet-ssh: ssh
+    https://github.com/puppetlabs/puppetlabs-stdlib: stdlib
+    https://github.com/puppetlabs/puppetlabs-apt: apt
+    https://github.com/ripienaar/puppet-concat: concat
+    https://github.com/duritong/puppet-sysctl.git: sysctl
+    https://github.com/cprice-puppet/puppetlabs-inifile: inifile
 
   checkout_branches:
     # for some reason this is not checking out to master by default

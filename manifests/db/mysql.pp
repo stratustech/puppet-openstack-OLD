@@ -80,6 +80,7 @@ class openstack::db::mysql (
   if ($enabled) {
     # Create the Keystone db
     class { 'keystone::db::mysql':
+      charset       => 'utf8',
       user          => $keystone_db_user,
       password      => $keystone_db_password,
       dbname        => $keystone_db_dbname,
@@ -96,6 +97,7 @@ class openstack::db::mysql (
 
     # Create the Nova db
     class { 'nova::db::mysql':
+      charset       => 'utf8',
       user          => $nova_db_user,
       password      => $nova_db_password,
       dbname        => $nova_db_dbname,

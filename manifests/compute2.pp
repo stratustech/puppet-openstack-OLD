@@ -60,6 +60,7 @@ class openstack::compute2 (
   # Glance
   $glance_api_servers            = false,
   # Virtualization
+  virttype                       = 'libvirt',
   $libvirt_type                  = 'kvm',
   # Avance
   $avance_conn_url = undef,
@@ -125,19 +126,24 @@ class openstack::compute2 (
     vncproxy_host                 => $vncproxy_host,
   }
 
-  # # Configure libvirt for nova-compute
-  # class { 'nova::compute::libvirt':
-  #   libvirt_type      => $libvirt_type,
-  #   vncserver_listen  => $vncserver_listen_real,
-  #   migration_support => $migration_support,
-  # }
-
-  class { 'nova::compute::avanceserver':
-    avanceapi_connection_url => $avance_conn_url,
-    avanceapi_connection_username => $avance_conn_username,
-    avanceapi_connection_password => $avance_conn_password,
-    avanceapi_inject_image => $avance_inject_image,
-  )
+   case $virttype {
+      'libvirt':    {
+                  class { 'nova::compute::libvirt':
+                    libvirt_type      => $libvirt_type,
+                    vncserver_listen  => $vncserver_listen_real,
+                    migration_support => $migration_support,
+                  }
+       }
+      'avance': {
+                  class { 'nova::compute::avanceserver':
+                    avanceapi_connection_url => $avance_conn_url,
+                    avanceapi_connection_username => $avance_conn_username,
+                    avanceapi_connection_password => $avance_conn_password,
+                    avanceapi_inject_image => $avance_inject_image,
+                  }
+        }
+      default:            {  } # apply the generic class
+    }
 
 
   # if the compute node should be configured as a multi-host

@@ -195,5 +195,3 @@ class openstack::compute2 (
       nova_config { 'DEFAULT/volume_api_class': value => 'nova.volume.cinder.API' }
     }
   }
-
-}

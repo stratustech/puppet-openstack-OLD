@@ -127,7 +127,7 @@ class openstack::compute2 (
   }
 
    case $virttype {
-      'libvirt':    {
+      'libvirt': {
                   class { 'nova::compute::libvirt':
                     libvirt_type      => $libvirt_type,
                     vncserver_listen  => $vncserver_listen_real,
@@ -142,7 +142,9 @@ class openstack::compute2 (
                     avanceapi_inject_image => $avance_inject_image,
                   }
         }
-      default:            {  } # apply the generic class
+      default:  {
+                    fail('Must specify the Virtualization type')
+        }
     }
 
 

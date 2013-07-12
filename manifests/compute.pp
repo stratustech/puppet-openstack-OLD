@@ -60,7 +60,13 @@ class openstack::compute (
   # Glance
   $glance_api_servers            = false,
   # Virtualization
+  $virttype                       = 'libvirt',
   $libvirt_type                  = 'kvm',
+  # Avance
+  $avance_conn_url = undef,
+  $avance_conn_username = undef,
+  $avance_conn_password = undef,
+  $avance_inject_image = undef,
   # VNC
   $vnc_enabled                   = true,
   $vncproxy_host                 = undef,
@@ -125,12 +131,36 @@ class openstack::compute (
     vncproxy_host                 => $vncproxy_host,
   }
 
-  # Configure libvirt for nova-compute
-  class { 'nova::compute::libvirt':
-    libvirt_type      => $libvirt_type,
-    vncserver_listen  => $vncserver_listen_real,
-    migration_support => $migration_support,
-  }
+  # # Configure libvirt for nova-compute
+  # class { 'nova::compute::libvirt':
+  #   libvirt_type      => $libvirt_type,
+  #   vncserver_listen  => $vncserver_listen_real,
+  #   migration_support => $migration_support,
+  # }
+
+   case $virttype {
+      'libvirt': {
+                  class { 'nova::compute::libvirt':
+                    libvirt_type      => $libvirt_type,
+                    vncserver_listen  => $vncserver_listen_real,
+                    migration_support => $migration_support,
+                  }
+       }
+      'avance': {
+                  class { 'nova::compute::avanceserver':
+                    avanceapi_connection_url => $avance_conn_url,
+                    avanceapi_connection_username => $avance_conn_username,
+                    avanceapi_connection_password => $avance_conn_password,
+                    avanceapi_inject_image => $avance_inject_image,
+                  }
+        }
+      default:  {
+                    fail('Must specify the Virtualization type')
+        }
+    }
+
+
+
 
   # if the compute node should be configured as a multi-host
   # compute installation

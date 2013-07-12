@@ -60,7 +60,7 @@ class openstack::compute2 (
   # Glance
   $glance_api_servers            = false,
   # Virtualization
-  virttype                       = 'libvirt',
+  $virttype                       = 'libvirt',
   $libvirt_type                  = 'kvm',
   # Avance
   $avance_conn_url = undef,
